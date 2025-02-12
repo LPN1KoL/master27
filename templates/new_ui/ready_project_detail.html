@@ -1,0 +1,56 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/proj_details.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+        <h1>Мастер Хабаровск</h1>
+        <h3>Проект "{{project.project.name}}"</h3>
+</div>
+
+<div class="data">
+
+    {% if project.project.video %}
+        <div class="video-holder">
+            <div class="video">
+                <video id="vid" controls src="{{project.project.video.url}}"></video>
+            </div>
+        </div>
+    {% endif %}
+    {% if project.photos %}
+         <div class="photos"
+
+              {% if project.project.video %}
+              style="background-color: #560BAD;"
+              {% endif %}
+         >
+            {% for photo in project.photos %}
+                <div class="photo">
+                    <img class="ph" src="{{photo}}" alt="">
+                </div>
+            {% endfor %}
+         </div>
+    {% endif %}
+<div class="text">
+    <h2>Цена: {{ project.project.price|intcomma }} ₽</h2>
+</div>
+    {% if project.project.description %}
+        <div class="text">
+            <h2 style="text-align: center;">Описание</h2>
+            <div class="description">
+                <h4 id="descr">{{project.project.description}}</h4>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+</div>
+
+
+{% endblock %}

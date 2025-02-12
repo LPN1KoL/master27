@@ -1,0 +1,48 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/calc_proj_details.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+        <h1>Мастер Хабаровск</h1>
+        <h3>Проект "{{project.name}}"</h3>
+</div>
+
+<div class="data">
+    {% if photos %}
+         <div class="photos">
+            {% for photo in photos %}
+                <div class="photo">
+                    <img class="ph" src="{{photo}}" alt="">
+                </div>
+            {% endfor %}
+         </div>
+    {% endif %}
+<div class="text">
+    <h2>Цена: {{ project.price|intcomma }} ₽</h2>
+</div>
+    {% if project.description %}
+        <div class="text">
+            <h2 style="text-align: center;">Описание</h2>
+            <div class="description">
+                <h4 id="descr">{{project.description}}</h4>
+            </div>
+        </div>
+    {% endif %}
+
+{% if project.file %}
+    <div class="file-h">
+        <h1>Скачать файл с описанием:</h1>
+        <a href="/get_file?url={{project.file.url}}">Скачать</a>
+    </div>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

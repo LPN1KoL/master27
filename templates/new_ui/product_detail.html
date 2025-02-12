@@ -1,0 +1,201 @@
+{% extends 'new_ui/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_ui/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+        <h3>Мастер Хабаровск</h3>
+    </div>
+
+{% if product.product.photo %}
+    <div class="data-cont gr">
+
+        <div class="image-h grid-ul">
+                <img class="img" src="{{product.product.photo.url}}" alt="">
+        </div>
+        <div class="data-h grid-ul">
+            {% if product.product.product_code %}
+                <h2>Код товара: {{product.product.product_code}}</h2>
+            {% else %}
+                <h2>Код товара: Не указано</h2>
+            {% endif %}
+
+            {% if product.product.name %}
+                <h2>Название: {{product.product.name}}</h2>
+            {% else %}
+                <h2>Название: Не указано</h2>
+            {% endif %}
+
+            {% if product.product.price %}
+                <h2>Цена: {{product.product.price|intcomma}} ₽</h2>
+            {% else %}
+                <h2>Цена: Не указано</h2>
+            {% endif %}
+
+            {% if product.product.age_start %}
+                <h3>Возраст(от): {{product.product.age_start}}</h3>
+            {% else %}
+                <h3>Возраст(от): Не указано</h3>
+            {% endif %}
+
+            {% if product.product.age_end %}
+                <h3>Возраст(до): {{product.product.age_end}}</h3>
+            {% else %}
+                <h3>Возраст(до): Не указано</h3>
+            {% endif %}
+
+            {% if product.product.height %}
+                <h3>Высота: {{product.product.height}} мм</h3>
+            {% else %}
+                <h3>Высота: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.length %}
+                <h3>Длина: {{product.product.length}} мм</h3>
+            {% else %}
+                <h3>Длина: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.width %}
+                <h3>Ширина: {{product.product.width}} мм</h3>
+            {% else %}
+                <h3>Ширина: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.weight %}
+                <h3>Вес: {{product.product.weight}} кг</h3>
+            {% else %}
+                <h3>Вес: Не указано</h3>
+            {% endif %}
+
+            {% if product.concrete %}
+                <h3>Бетон: {{product.concrete}}</h3>
+            {% else %}
+                <h3>Бетон: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.installation_time %}
+                <h3>Время установки: {{product.product.installation_time}}</h3>
+            {% else %}
+                <h3>Время установки: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.params %}
+                <h3>Дополнительные параметры: {{product.product.params}}</h3>
+            {% else %}
+                <h3>Дополнительные параметры: Не указано</h3>
+            {% endif %}
+
+            <div id="dp-{{ product.product.id }}" class="catalog-product-button">
+                {% if request.user.is_authenticated %}
+                    {% if product.in_trash %}
+                        <div class="prod-actions">
+                            <button type="button" onclick="down_uitp_count({{ request.user.id }}, {{ product.product.id }})">-</button>
+                            <input readonly id="p-{{ product.product.id }}" class="catalog-product-count" value="{{ product.in_trash_count }}" type="number">
+                            <button type="button" onclick="up_uitp_count({{ request.user.id }}, {{ product.product.id }})">+</button>
+                        </div>
+                    {% else %}
+                        <button type="button" onclick="add_product_to_trash({{ request.user.id }}, {{ product.product.id }})" class="catalog-product-link">В корзину</button>
+                    {% endif %}
+                {% endif %}</div>
+        </div>
+    </div>
+{% else %}
+    <div class="data-cont grid-ul one">
+        {% if product.product.product_code %}
+                <h2>Код товара: {{product.product.product_code}}</h2>
+            {% else %}
+                <h2>Код товара: Не указано</h2>
+            {% endif %}
+
+            {% if product.product.name %}
+                <h2>Название: {{product.product.name}}</h2>
+            {% else %}
+                <h2>Название: Не указано</h2>
+            {% endif %}
+
+            {% if product.product.price %}
+                <h2>Цена: {{product.product.price|intcomma}} ₽</h2>
+            {% else %}
+                <h2>Цена: Не указано</h2>
+            {% endif %}
+
+            {% if product.product.age_start %}
+                <h3>Возраст(от): {{product.product.age_start}}</h3>
+            {% else %}
+                <h3>Возраст(от): Не указано</h3>
+            {% endif %}
+
+            {% if product.product.age_end %}
+                <h3>Возраст(до): {{product.product.age_end}}</h3>
+            {% else %}
+                <h3>Возраст(до): Не указано</h3>
+            {% endif %}
+
+            {% if product.product.height %}
+                <h3>Высота: {{product.product.height}} мм</h3>
+            {% else %}
+                <h3>Высота: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.length %}
+                <h3>Длина: {{product.product.length}} мм</h3>
+            {% else %}
+                <h3>Длина: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.width %}
+                <h3>Ширина: {{product.product.width}} мм</h3>
+            {% else %}
+                <h3>Ширина: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.weight %}
+                <h3>Вес: {{product.product.weight}} кг</h3>
+            {% else %}
+                <h3>Вес: Не указано</h3>
+            {% endif %}
+
+            {% if product.concrete %}
+                <h3>Бетон: {{product.concrete}}</h3>
+            {% else %}
+                <h3>Бетон: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.installation_time %}
+                <h3>Время установки: {{product.product.installation_time}}</h3>
+            {% else %}
+                <h3>Время установки: Не указано</h3>
+            {% endif %}
+
+            {% if product.product.params %}
+                <h3>Дополнительные параметры: {{product.product.params}}</h3>
+            {% else %}
+                <h3>Дополнительные параметры: Не указано</h3>
+            {% endif %}
+
+            <div id="dp-{{ product.product.id }}" class="catalog-product-button">
+                {% if request.user.is_authenticated %}
+                    {% if product.in_trash %}
+                        <div class="prod-actions">
+                            <button type="button" onclick="down_uitp_count({{ request.user.id }}, {{ product.product.id }})">-</button>
+                            <input readonly id="p-{{ product.product.id }}" class="catalog-product-count" value="{{ product.in_trash_count }}" type="number">
+                            <button type="button" onclick="up_uitp_count({{ request.user.id }}, {{ product.product.id }})">+</button>
+                        </div>
+                    {% else %}
+                        <button type="button" onclick="add_product_to_trash({{ request.user.id }}, {{ product.product.id }})" class="catalog-product-link">В корзину</button>
+                    {% endif %}
+                {% endif %}</div>
+
+    </div>
+{% endif %}
+
+{% block scripts %}
+    <script src="{% static 'js/new_ui/catalog.js' %}"></script>
+{% endblock %}
+{% endblock %}

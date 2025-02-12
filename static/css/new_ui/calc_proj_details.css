@@ -1,0 +1,65 @@
+@media (width > 500px) {
+
+    .header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        padding: 7rem 0;
+        padding-bottom: 3rem;
+        background-color: #560BAD;
+        color: white;
+    }
+
+    .header > h1 {
+        font-size: 60px;
+        margin: 0;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .header > h3 {
+        font-size: 40px;
+        margin: 0;
+    }
+    .text{
+        padding: 1rem 5rem;
+        width: calc(100% - 10rem);
+    }
+
+    .photos{
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        padding: 2rem;
+        width: calc(100% - 4rem);
+    }
+
+    .photo{
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .ph{
+        width: 100%;
+    }
+
+    .text{
+        background-color: #560BAD;
+        color: white;
+    }
+    .file-h > h1{
+        text-align: center;
+    }
+    .file-h > a{
+
+        text-decoration: underline;
+        color: blue;
+        font-size: 36px;
+    }
+    .file-h{
+        padding-bottom: 4rem;
+        text-align: center;
+    }
+}
