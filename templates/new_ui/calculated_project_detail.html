@@ -15,6 +15,7 @@
 
 <div class="data">
     {% if photos %}
+         <h1 style="text-align: center;">Фотографии проекта с расчетами</h1>
          <div class="photos">
             {% for photo in photos %}
                 <div class="photo">
@@ -23,22 +24,21 @@
             {% endfor %}
          </div>
     {% endif %}
-<div class="text">
-    <h2>Цена: {{ project.price|intcomma }} ₽</h2>
-</div>
+<div class="wrapper">
+    <div class="text">
     {% if project.description %}
-        <div class="text">
-            <h2 style="text-align: center;">Описание</h2>
-            <div class="description">
-                <h4 id="descr">{{project.description}}</h4>
-            </div>
+        <h1 style="text-align: center;">Описание</h1>
+        <div class="description">
+            <h2 id="descr">{{project.description}}</h2>
         </div>
     {% endif %}
-
+        <span style="font-size: 30px;">Цена: <span style="font-size: 34px;">{{ project.price|intcomma }} ₽</span></span>
+    </div>
+</div>
 {% if project.file %}
     <div class="file-h">
         <h1>Скачать файл с описанием:</h1>
-        <a href="/get_file?url={{project.file.url}}">Скачать</a>
+        <a class="fl" href="/get_file?url={{project.file.url}}"><span class="material-symbols-outlined fix">download</span>Скачать</a>
     </div>
 {% endif %}
 

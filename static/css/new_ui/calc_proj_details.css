@@ -48,18 +48,44 @@
     .text{
         background-color: #560BAD;
         color: white;
+        width: 86%;
+        border-radius: 25px;
+        padding-bottom: 2rem;
     }
     .file-h > h1{
         text-align: center;
     }
     .file-h > a{
-
-        text-decoration: underline;
-        color: blue;
+        padding: 1rem;
+        text-decoration: none;
+        color: white;
+        background-color: #4895EF;
         font-size: 36px;
+        border-radius: 20px;
     }
     .file-h{
         padding-bottom: 4rem;
         text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .fix{
+        font-size: 36px;
+    }
+    .fl{
+        display: flex;
+        flex-direction: row;
+    }
+    .wrapper{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .description{
+        padding-bottom: 2rem;
+    }
+    .text > span{
+        margin: 2rem 0rem;
     }
 }

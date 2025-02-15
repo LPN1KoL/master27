@@ -29,6 +29,8 @@
         padding: 4rem 0rem;
         width: 100%;
         text-align: center;
+        background-color: #560BAD;
+        padding-top: 2rem;
     }
 
     #vid{
@@ -52,11 +54,23 @@
     }
 
     .text{
-        padding: 2rem 5rem;
+        padding: 2rem;
         width: calc(100% - 10rem);
+        background-color: #560BAD;
+        width: 86%;
+        color: white;
+        border-radius: 25px;
     }
     .description{
-        padding-bottom: 10rem;
+        padding-bottom: 2rem;
+    }
+
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+        width: 100%;
+        padding-bottom: 4rem;
     }
 
 }
