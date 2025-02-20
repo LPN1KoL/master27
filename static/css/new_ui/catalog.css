@@ -54,6 +54,10 @@
         align-items: start;
     }
 
+    .tile{
+        height: 2.2rem;
+        overflow-y: hidden;
+    }
     .catalog-product {
         position: relative;
         transition: all 0.2s ease-in-out;

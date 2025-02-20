@@ -147,13 +147,15 @@ def catalog(request):
 
 
 		if n_ch != 'False':
-
 			pre_products = []
 			for product in products:
-				for pt in producttags.filter(product=product):
-					if pt.tag.name.lower().startswith(n_ch.lower()) or n_ch.lower() in product.name.lower():
-						pre_products.append(product)
-						break
+				if n_ch.lower() in product.name.lower():
+					pre_products.append(product)
+				else:
+					for pt in producttags.filter(product=product):
+						if pt.tag.name.lower().startswith(n_ch.lower()):
+							pre_products.append(product)
+							break
 
 			products = pre_products
 
@@ -519,6 +521,11 @@ def ready_project_detail(request, pid):
 		def __init__(self, project):
 			self.project = project
 			self.photos = []
+			self.video = ''
+
+			if self.project.video:
+				if os.path.exists(self.project.video.path):
+					self.video = self.project.video.url
 
 			for ph in Project_photo.objects.filter(project=project):
 				if ph.photo:
@@ -530,11 +537,14 @@ def ready_project_detail(request, pid):
 @csrf_exempt
 def get_file(request):
 	if request.GET:
-		url = request.GET.get('url')
+		try:
+			url = request.GET.get('url')
 
-		file = open(os.path.join(settings.BASE_DIR, url.replace('/', '', 1)), 'rb')
+			file = open(os.path.join(settings.BASE_DIR, url.replace('/', '', 1)), 'rb')
 
-		return FileResponse(file, as_attachment=True, filename=url.replace('/media/projects_files/', '', 1))
+			return FileResponse(file, as_attachment=True, filename=url.replace('/media/projects_files/', '', 1))
+		except:
+			return HttpResponseNotFound(request)
 
 
 def projects(request):
@@ -563,8 +573,13 @@ def projects(request):
 def calculated_project_details(request, id):
 	project = get_object_or_404(Calculated_project, id=id)
 	photos = []
+	file = ''
+	if project.file:
+		if os.path.exists(project.file.path):
+			file = project.file.url
+
 
 	for ph in Calculated_project_photo.objects.filter(project=project):
 		if ph.photo:
 			photos.append(ph.photo.url)
-	return render(request, 'new_ui/calculated_project_detail.html', {'project': project, 'photos': photos})
+	return render(request, 'new_ui/calculated_project_detail.html', {'project': project, 'photos': photos, 'file': file})

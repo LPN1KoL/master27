@@ -20,79 +20,79 @@
         </div>
         <div class="data-h grid-ul"><ul>
 
-            <li>{% if product.product.name %}
-                <h2>Название: {{product.product.name}}</h2>
+           {% if product.product.name %}
+                 <li><h2>Название: {{product.product.name}}</h2></li>
             {% else %}
-                <h2>Название: Не указано</h2>
-            {% endif %}</li>
+                 <li><h2>Название: Не указано</h2></li>
+            {% endif %}
 
-            <li>{% if product.product.product_code %}
-                <h3>Код товара: {{product.product.product_code}}</h3>
+            {% if product.product.product_code %}
+                 <li><h3>Код товара: {{product.product.product_code}}</h3></li>
             {% else %}
-                <h3>Код товара: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Код товара: Не указано</h3></li>
+            {% endif %}
 
 
 
-            <li>{% if product.product.age_start %}
-                <h3>Возраст(от): {{product.product.age_start}}</h3>
+            {% if product.product.age_start %}
+                 <li><h3>Возраст(от): {{product.product.age_start}}</h3></li>
             {% else %}
-                <h3>Возраст(от): Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Возраст(от): Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.age_end %}
-                <h3>Возраст(до): {{product.product.age_end}}</h3>
-            <li>{% else %}
-                <h3>Возраст(до): Не указано</h3>
-            {% endif %}</li>
-
-            <li>{% if product.product.height %}
-                <h3>Высота: {{product.product.height}} мм</h3>
+            {% if product.product.age_end %}
+                 <li><h3>Возраст(до): {{product.product.age_end}}</h3></li>
             {% else %}
-                <h3>Высота: Не указано</h3>
-            {% endif %}</li>
+                <li><h3>Возраст(до): Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.length %}
-                <h3>Длина: {{product.product.length}} мм</h3>
+            {% if product.product.height %}
+                 <li><h3>Высота: {{product.product.height}} мм</h3></li>
             {% else %}
-                <h3>Длина: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Высота: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.width %}
-                <h3>Ширина: {{product.product.width}} мм</h3>
+            {% if product.product.length %}
+                 <li><h3>Длина: {{product.product.length}} мм</h3></li>
             {% else %}
-                <h3>Ширина: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Длина: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.weight %}
-                <h3>Вес: {{product.product.weight}} кг</h3>
+            {% if product.product.width %}
+                 <li><h3>Ширина: {{product.product.width}} мм</h3></li>
             {% else %}
-                <h3>Вес: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Ширина: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.concrete %}
-                <h3>Бетон: {{product.concrete}}</h3>
+            {% if product.product.weight %}
+                 <li><h3>Вес: {{product.product.weight}} кг</h3></li>
             {% else %}
-                <h3>Бетон: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Вес: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.installation_time %}
-                <h3>Время установки: {{product.product.installation_time}}</h3>
+            {% if product.concrete %}
+                 <li><h3>Бетон: {{product.concrete}}</h3></li>
             {% else %}
-                <h3>Время установки: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Бетон: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.params %}
-                <h3>Дополнительные параметры: {{product.product.params}}</h3>
+            {% if product.product.installation_time %}
+                 <li><h3>Время установки: {{product.product.installation_time}}</h3></li>
             {% else %}
-                <h3>Дополнительные параметры: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Время установки: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.price %}
-                <h2>Цена: {{product.product.price|intcomma}} ₽</h2>
+            {% if product.product.params %}
+                 <li><h3>Дополнительные параметры: {{product.product.params}}</h3></li>
             {% else %}
-                <h2>Цена: Не указано</h2>
-            {% endif %}</li></ul>
+                 <li><h3>Дополнительные параметры: Не указано</h3></li>
+            {% endif %}
+
+            {% if product.product.price %}
+                 <li><h2>Цена: {{product.product.price|intcomma}} ₽</h2></li>
+            {% else %}
+                 <li><h2>Цена: Не указано</h2></li></ul>
+            {% endif %}
 
             <div id="dp-{{ product.product.id }}" class="catalog-product-button">
                 {% if request.user.is_authenticated %}
@@ -112,79 +112,79 @@
     <div class="data-cont grid-ul one">
             <ul>
 
-            <li>{% if product.product.name %}
-                <h2>Название: {{product.product.name}}</h2>
+            {% if product.product.name %}
+                 <li><h2>Название: {{product.product.name}}</h2></li>
             {% else %}
-                <h2>Название: Не указано</h2>
-            {% endif %}</li>
+                 <li><h2>Название: Не указано</h2></li>
+            {% endif %}
 
 
 
-            <li>{% if product.product.product_code %}
-                <h3>Код товара: {{product.product.product_code}}</h3>
+            {% if product.product.product_code %}
+                 <li><h3>Код товара: {{product.product.product_code}}</h3></li>
             {% else %}
-                <h3>Код товара: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Код товара: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.age_start %}
-                <h3>Возраст(от): {{product.product.age_start}}</h3>
+            {% if product.product.age_start %}
+                <li><h3>Возраст(от): {{product.product.age_start}}</h3></li>
             {% else %}
-                <h3>Возраст(от): Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Возраст(от): Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.age_end %}
-                <h3>Возраст(до): {{product.product.age_end}}</h3>
+            {% if product.product.age_end %}
+                 <li><h3>Возраст(до): {{product.product.age_end}}</h3></li>
             {% else %}
-                <h3>Возраст(до): Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Возраст(до): Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.height %}
-                <h3>Высота: {{product.product.height}} мм</h3>
+            {% if product.product.height %}
+                 <li><h3>Высота: {{product.product.height}} мм</h3></li>
             {% else %}
-                <h3>Высота: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Высота: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.length %}
-                <h3>Длина: {{product.product.length}} мм</h3>
+            {% if product.product.length %}
+                 <li><h3>Длина: {{product.product.length}} мм</h3></li>
             {% else %}
-                <h3>Длина: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Длина: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.width %}
-                <h3>Ширина: {{product.product.width}} мм</h3>
+            {% if product.product.width %}
+                 <li><h3>Ширина: {{product.product.width}} мм</h3></li>
             {% else %}
-                <h3>Ширина: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Ширина: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.weight %}
-                <h3>Вес: {{product.product.weight}} кг</h3>
+            {% if product.product.weight %}
+                 <li><h3>Вес: {{product.product.weight}} кг</h3></li>
             {% else %}
-                <h3>Вес: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Вес: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.concrete %}
-                <h3>Бетон: {{product.concrete}}</h3>
+            {% if product.concrete %}
+                 <li><h3>Бетон: {{product.concrete}}</h3></li>
             {% else %}
-                <h3>Бетон: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Бетон: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.installation_time %}
-                <h3>Время установки: {{product.product.installation_time}}</h3>
+            {% if product.product.installation_time %}
+                 <li><h3>Время установки: {{product.product.installation_time}}</h3></li>
             {% else %}
-                <h3>Время установки: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Время установки: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.params %}
-                <h3>Дополнительные параметры: {{product.product.params}}</h3>
+            {% if product.product.params %}
+                 <li><h3>Дополнительные параметры: {{product.product.params}}</h3></li>
             {% else %}
-                <h3>Дополнительные параметры: Не указано</h3>
-            {% endif %}</li>
+                 <li><h3>Дополнительные параметры: Не указано</h3></li>
+            {% endif %}
 
-            <li>{% if product.product.price %}
-                <h2>Цена: {{product.product.price|intcomma}} ₽</h2>
+            {% if product.product.price %}
+                 <li><h2>Цена: {{product.product.price|intcomma}} ₽</h2></li>
             {% else %}
-                <h2>Цена: Не указано</h2>
-            {% endif %}</li></ul>
+                 <li><h2>Цена: Не указано</h2></li>
+            {% endif %}</ul>
 
             <div id="dp-{{ product.product.id }}" class="catalog-product-button">
                 {% if request.user.is_authenticated %}

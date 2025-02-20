@@ -25,6 +25,9 @@
                             </label>{{ f }}
 
                     </div>
+                    {% if f.errors %}
+                        <span>{{f.errors}}</span>
+                    {% endif %}
                 {% else %}
                     <div class="form-field">
                         <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>

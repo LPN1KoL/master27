@@ -51,6 +51,7 @@
         width: 86%;
         border-radius: 25px;
         padding-bottom: 2rem;
+
     }
     .file-h > h1{
         text-align: center;
@@ -87,5 +88,8 @@
     }
     .text > span{
         margin: 2rem 0rem;
+    }
+    .mar-b{
+        margin-bottom: 4rem;
     }
 }

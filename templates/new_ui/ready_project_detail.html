@@ -26,11 +26,11 @@
             {% endfor %}
          </div>
     {% endif %}
-    {% if project.project.video %}
+    {% if project.video %}
         <div class="video-holder">
         <h1 style="text-align: center; color: white; margin-top: 0px; margin-bottom: 2rem;">Видеообзор</h1>
             <div class="video">
-                <video id="vid" controls src="{{project.project.video.url}}"></video>
+                <video id="vid" controls src="{{project.video}}"></video>
             </div>
         </div>
     {% endif %}

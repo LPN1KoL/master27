@@ -23,6 +23,9 @@
 
                 <form name="filters" method="post">
 
+                    <label for="n_ch">Поиск</label>
+                    <input id="n_ch" name="n_ch" type="text" class="filter-input">
+
                     <label for="cat_ch">Категория</label>
                     <select id="cat_ch" class="filter-select" name="cat">
                         {% if cat_id == -1 %}
@@ -42,8 +45,6 @@
                     <label for="code_ch">Код продукта</label>
                     <input id="code_ch" name="code_ch" type="text" class="filter-input">
 
-                    <label for="n_ch">Наименование товара</label>
-                    <input id="n_ch" name="n_ch" type="text" class="filter-input">
 
                     <div class="double-input">
                         <div class="dinp">
@@ -115,7 +116,9 @@
                         </div>
                         <div class="catalog-product-data">
                             <span class="catalog-product-price">{{ product.price|intcomma }} ₽</span>
-                            <span title="{{ product.name }}" class="title">{{ product.name }}</span>
+                            <div class="tile">
+                                <span title="{{ product.name }}" class="title">{{ product.name }}</span>
+                            </div>
                         </div>
                         <div class="but-block">
                             <a class="link_to" href="product/{{product.id}}">Перейти</a>

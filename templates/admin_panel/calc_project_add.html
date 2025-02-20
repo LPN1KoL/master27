@@ -7,7 +7,7 @@
 
 {% block content %}
 
-    <h1 id="add">Добавление готового проекта</h1>
+    <h1 id="add">Добавление проекта с расчетами</h1>
     <div class="form">
         <div class="filler"></div>
         <form class="forma" action="" method="post" enctype="multipart/form-data">
@@ -19,6 +19,9 @@
                         {{ f }}
                         <button id="clear_image_button" type="button" onclick="clear_vid()">Очистить</button>
                     </div>
+                    {% if f.errors %}
+                        <span>{{f.errors}}</span>
+                    {% endif %}
                 {% else %}
                     <div class="form-field">
                         <label id="label_{{ f.id_for_label }}" for="{{ f.id_for_label }}">{{ f.label }}</label>

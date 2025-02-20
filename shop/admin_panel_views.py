@@ -654,6 +654,11 @@ def admin_ready_projects(request):
         class ProdPhot:
             def __init__(self, project):
                 self.project = project
+
+                self.video = ''
+                if self.project.video:
+                    if os.path.exists(self.project.video.path):
+                        self.video = self.project.video.url
                 for p in Project_photo.objects.filter(project=project):
                     if p.photo:
                         self.photo = p.photo
@@ -673,6 +678,9 @@ def admin_ready_projects(request):
 def admin_ready_projects_edit(request, pid):
     if request.user.role.access_to_admin_panel:
         proj = Ready_project.objects.get(id=pid)
+        video = False
+        if proj.video:
+            video = proj.video.url
         if request.POST:
             form = ReadyProjectForm(request.POST, request.FILES, instance=proj)
             if form.is_valid():
@@ -681,12 +689,15 @@ def admin_ready_projects_edit(request, pid):
                     Project_photo(project=proj, photo=file).save()
 
                 return HttpResponseRedirect('/admin_panel/ready_projects')
+            else:
+                return render(request, 'admin_panel/ready_project_edit.html', {
+                    'form': form,
+                    'video': video,
+                    'photos': [x for x in Project_photo.objects.filter(project=proj)]
+                })
 
         else:
             form = ReadyProjectForm(instance=proj)
-            video = False
-            if proj.video:
-                video = proj.video.url
 
             return render(request, 'admin_panel/ready_project_edit.html', {
                 'form': form,
@@ -718,20 +729,17 @@ def admin_delete_project(request):
 def admin_project_add(request):
     if request.user.role.access_to_admin_panel:
 
-
         if request.POST:
             form = ReadyProjectForm(request.POST, request.FILES)
             if form.is_valid():
                 project = form.save()
-
                 for file in request.FILES.getlist('1'):
                     Project_photo(project=project, photo=file).save()
-
-
-
                 return HttpResponseRedirect('/admin_panel/ready_projects')
-
-
+            else:
+                return render(request, 'admin_panel/ready_project_add.html', {
+                    'form': form
+                })
 
         else:
             form = ReadyProjectForm()
@@ -759,6 +767,10 @@ def admin_calculated_projects(request):
         class ProdPhot:
             def __init__(self, project):
                 self.project = project
+                self.file = ''
+                if self.project.file:
+                    if os.path.exists(self.project.file.path):
+                        self.file = self.project.file.url
                 for p in Calculated_project_photo.objects.filter(project=project):
                     if p.photo:
                         self.photo = p.photo
@@ -778,7 +790,6 @@ def admin_calculated_projects(request):
 def admin_add_calc_project(request):
     if request.user.role.access_to_admin_panel:
 
-
         if request.POST:
             form = CalcProjectForm(request.POST, request.FILES)
             if form.is_valid():
@@ -787,12 +798,11 @@ def admin_add_calc_project(request):
                 for file in request.FILES.getlist('1'):
                     Calculated_project_photo(project=project, photo=file).save()
 
-
-
                 return HttpResponseRedirect('/admin_panel/calculated_projects')
-
-
-
+            else:
+                return render(request, 'admin_panel/calc_project_add.html', {
+                                'form': form
+                            })
         else:
             form = CalcProjectForm()
             return render(request, 'admin_panel/calc_project_add.html', {
@@ -806,6 +816,9 @@ def admin_add_calc_project(request):
 def admin_edit_calc_project(request, pid):
     if request.user.role.access_to_admin_panel:
         proj = Calculated_project.objects.get(id=pid)
+        file = False
+        if proj.file:
+            file = proj.file.url
         if request.POST:
             form = CalcProjectForm(request.POST, request.FILES, instance=proj)
             if form.is_valid():
@@ -814,12 +827,16 @@ def admin_edit_calc_project(request, pid):
                     Calculated_project_photo(project=proj, photo=file).save()
 
                 return HttpResponseRedirect('/admin_panel/calculated_projects')
+            else:
+                return render(request, 'admin_panel/calc_project_edit.html', {
+                    'form': form,
+                    'file': file,
+                    'photos': [x for x in Calculated_project_photo.objects.filter(project=proj)]
+                })
 
         else:
             form = CalcProjectForm(instance=proj)
-            file = False
-            if proj.file:
-                file = proj.file.url
+
 
             return render(request, 'admin_panel/calc_project_edit.html', {
                 'form': form,

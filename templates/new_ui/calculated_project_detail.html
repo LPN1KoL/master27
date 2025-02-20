@@ -35,11 +35,14 @@
         <span style="font-size: 30px;">Цена: <span style="font-size: 34px;">{{ project.price|intcomma }} ₽</span></span>
     </div>
 </div>
-{% if project.file %}
+
+{% if file %}
     <div class="file-h">
         <h1>Скачать файл с описанием:</h1>
-        <a class="fl" href="/get_file?url={{project.file.url}}"><span class="material-symbols-outlined fix">download</span>Скачать</a>
+        <a class="fl" href="/get_file?url={{file}}"><span class="material-symbols-outlined fix">download</span>Скачать</a>
     </div>
+{% else %}
+        <div class="mar-b"></div>
 {% endif %}
 
 </div>
